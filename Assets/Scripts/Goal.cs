@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Das Ziel: Erreicht Guenni die Schatzkiste, springt sie auf,
-// eine Gewinn-Nachricht erscheint und mit R startet das Level neu.
+// Das Ziel: Erreicht Guenni die Schatzkiste, springt sie auf und eine Gewinn-Nachricht erscheint.
+// Enter -> nächstes Level (nach dem letzten Level geht's zurück zu Level 1)
+// R     -> aktuelles Level neu starten
 // Dieses Skript kommt auf die Schatzkiste (mit Box Collider 2D, Is Trigger angehakt).
 public class Goal : MonoBehaviour
 {
     public Sprite openChestSprite;   // Hier Chest_Open reinziehen
-    public GameObject winMessage;    // Hier das Text-Objekt "Geschafft!" reinziehen
+    public GameObject winMessage;    // Hier das Text-Objekt "WinMessage" reinziehen
 
     private bool reached = false;
 
@@ -39,10 +40,25 @@ public class Goal : MonoBehaviour
 
     void Update()
     {
-        // Nach dem Gewinnen: R drückt -> Level neu starten
-        if (reached && Input.GetKeyDown(KeyCode.R))
+        if (!reached) return;
+
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+
+        // NEU: Enter -> nächstes Level laden
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            int nextLevel = currentLevel + 1;
+
+            // Gibt es kein weiteres Level in der Scene List? Dann zurück zum ersten
+            if (nextLevel >= SceneManager.sceneCountInBuildSettings) nextLevel = 0;
+
+            SceneManager.LoadScene(nextLevel);
+        }
+
+        // R -> aktuelles Level neu starten
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(currentLevel);
         }
     }
 }
