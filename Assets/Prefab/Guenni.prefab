@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1043998142992660908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.4, z: 0}
+  m_LocalPosition: {x: -0.28, y: -5.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7549709942102405534}
   - component: {fileID: 7816752426346879068}
   - component: {fileID: 8232333427576791866}
+  - component: {fileID: 810627031628390226}
   m_Layer: 0
   m_Name: Guenni
   m_TagString: Untagged
@@ -61,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 6760056416248302828}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.3, y: -7.5, z: 0}
+  m_LocalPosition: {x: -25.3, y: -7.07, z: 0}
   m_LocalScale: {x: 0.7099, y: 0.6953, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -115,9 +116,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1768240043701040873, guid: b9e48f29967454b51801b4584cd83ab1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee3588e252334432e89d6dd77e474f86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -225,17 +226,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.3, y: 0}
+  m_Offset: {x: -0.29999995, y: -2.1672204}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.66, y: 6.9}
+    oldSize: {x: 16, y: 16}
     newSize: {x: 4.66, y: 6.9}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 6.9}
+  m_Size: {x: 3, y: 6.910339}
   m_EdgeRadius: 0
 --- !u!114 &8232333427576791866
 MonoBehaviour:
@@ -261,3 +262,29 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &810627031628390226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760056416248302828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378130d191ba144f4b4ad0f47fff5bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GuenniAnimation
+  idleFrames:
+  - {fileID: 21300000, guid: ee3588e252334432e89d6dd77e474f86, type: 3}
+  - {fileID: 21300000, guid: 3a4005532b7be4d288936ad7d141b950, type: 3}
+  - {fileID: 21300000, guid: c837fc7bef0ea4e67b5fc53b999ea90d, type: 3}
+  - {fileID: 21300000, guid: 3a4005532b7be4d288936ad7d141b950, type: 3}
+  idleFrameTime: 0.25
+  runFrames:
+  - {fileID: 21300000, guid: 6949c21fa9ad04a368786d190332fe0c, type: 3}
+  - {fileID: 21300000, guid: ee3588e252334432e89d6dd77e474f86, type: 3}
+  - {fileID: 21300000, guid: e1d0348fbd6fd4987a41bbe2bbaa5a2a, type: 3}
+  - {fileID: 21300000, guid: ee3588e252334432e89d6dd77e474f86, type: 3}
+  runFrameTime: 0.1
+  jumpSprite: {fileID: 21300000, guid: 8bfc3577471194d27aa1ce633244ffa8, type: 3}
+  fallSprite: {fileID: 21300000, guid: 13dd3c1e683a84402bf9a3e334d8a54e, type: 3}

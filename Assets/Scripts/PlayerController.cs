@@ -28,7 +28,11 @@ public class PlayerController : MonoBehaviour
     private float coyoteCounter;      // Restzeit für den "Kanten-Sprung"
     private float jumpBufferCounter;  // Restzeit für einen gemerkten Sprung
     private Vector3 startPosition;    // Hier startet Guenni, hierhin kommt er beim Respawn zurück
-    private MovingPlatform currentPlatform; // NEU: Plattform, auf der Guenni gerade steht (oder null)
+    private MovingPlatform currentPlatform; // Plattform, auf der Guenni gerade steht (oder null)
+
+    // NEU: Damit das Animations-Skript nachfragen kann, ob Guenni am Boden steht und ob er laufen will
+    public bool IsGrounded => isGrounded;
+    public float MoveInput => moveInput;
 
     void Start()
     {
@@ -50,11 +54,11 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
         jumpHeld = Input.GetButton("Jump");
 
-        // Steht Guenni auf dem Boden? NEU: Wir merken uns auch, WORAUF er steht
+        // Steht Guenni auf dem Boden? Wir merken uns auch, WORAUF er steht
         Collider2D ground = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         isGrounded = ground != null;
 
-        // NEU: Ist das, worauf er steht, eine bewegliche Plattform?
+        // Ist das, worauf er steht, eine bewegliche Plattform?
         currentPlatform = isGrounded ? ground.GetComponent<MovingPlatform>() : null;
 
         // Coyote Time – solange er am Boden ist, Zähler voll; danach läuft er ab
@@ -100,7 +104,7 @@ public class PlayerController : MonoBehaviour
         // Fallgeschwindigkeit begrenzen
         if (velocity.y < -maxFallSpeed) velocity.y = -maxFallSpeed;
 
-        // NEU: Auf einer beweglichen Plattform fährt Guenni mit
+        // Auf einer beweglichen Plattform fährt Guenni mit
         if (currentPlatform != null)
         {
             velocity.x += currentPlatform.Velocity.x;
